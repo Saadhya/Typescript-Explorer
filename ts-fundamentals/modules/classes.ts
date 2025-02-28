@@ -1,4 +1,5 @@
-import { CastMember } from "./interfaces";
+import { logMethodInfo } from "./decorators";
+import { CastMember, FavoriteItem } from "./interfaces";
 
 export class Performer implements CastMember {
   name: string = "";
@@ -42,6 +43,7 @@ export class Documentary extends Video {
   constructor(newTitle: string, newYear: number, public subject: string) {
     super(newTitle, newYear, "Ashok");
   }
+  @logMethodInfo
   printItem(): void {
     super.printItem();
     // year only accessible in subclasses not outside of it with object
@@ -70,8 +72,8 @@ export let Musical = class extends Video {
     console.log(`Musical credits ${this.producer}`);
   }
 };
-let myMusical = new Musical("Grease", 1978, "sing-song pictures");
-myMusical.printCredits();
+// let myMusical = new Musical("Grease", 1978, "sing-song pictures");
+// myMusical.printCredits();
 
 //such class expression can be used anywhere where class definition is expected
 export class Course extends class {
@@ -81,3 +83,22 @@ export class Course extends class {
 }
 // let course = new Course();
 // course.subject="piano"
+
+// generic classes
+export class Favorites<T extends FavoriteItem> {
+  // private _items: T[] = [];
+  private _items: Array<T> = new Array<T>();
+  add(item: T): void {
+    this._items.push(item);
+  }
+  getFirst(): T {
+    if (this._items.length > 0) return this._items[0];
+    return this._items[0];
+  }
+  find(title:string):T{
+    return this._items.filter(item=>item.title===title)[0];
+  }
+  printTitles():void{
+    this._items.forEach(item=>console.log(item.title))
+  }
+}

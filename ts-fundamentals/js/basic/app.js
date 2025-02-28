@@ -26,3 +26,4 @@ let strarr2 = ['Hello', 'World'];
 // for multiple type of values in array
 let anyArr = ['Hello', 10, true];
 console.log(anyArr); // [ 'Hello', 10, true ]
+//# sourceMappingURL=app.js.map

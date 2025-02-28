@@ -16,3 +16,4 @@ if (typeof movieReview == 'string') {
 else {
     console.log(`Rating: ${movieReview}/10`);
 }
+//# sourceMappingURL=exercise1.js.map

@@ -41,3 +41,4 @@ let favCastMember = new Performer();
 favCastMember.name = "Tom Cruise";
 favCastMember.email = "tom@gmail.com";
 favCastMember.rehearse(25);
+//# sourceMappingURL=interfaces.js.map

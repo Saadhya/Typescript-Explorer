@@ -68,4 +68,9 @@ favCastMember.name="Tom Cruise";
 favCastMember.email="tom@gmail.com";
 favCastMember.rehearse(25);
 
-export {Movie, reviewLogger as Logger, Person, Director, CastMember}
+//using constraint with generics
+interface FavoriteItem{
+  title:string;
+}
+
+export {Movie, reviewLogger as Logger, Person, Director, CastMember, FavoriteItem}

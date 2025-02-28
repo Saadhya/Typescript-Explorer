@@ -109,3 +109,33 @@ function movieInfo(
   console.log(`Year Released: ${movie.yearReleased}`);
   console.log(`director: ${movie.director}`);
 }
+
+// handling through promises
+function getMoviesByDirector(director: string): Promise<string[]> {
+  let p: Promise<string[]> = new Promise((resolve, reject) => {
+    setTimeout(() => {
+      let foundMovies: string[] = getTitles(director);
+      if (foundMovies.length > 0) {
+        resolve(foundMovies);
+      } else {
+        reject("no movies found for that director!");
+      }
+    }, 2000);
+  });
+  return p;
+}
+
+//using async/await
+export async function logSearchResults(director: string) {
+  try {
+    let foundMovies = await getMoviesByDirector(director);
+    console.log(foundMovies);
+  } catch (error) {
+    console.log(error);
+  }
+}
+export function purge<T>(inventory: Array<T>): Array<T> {
+  //implement fancy business logic
+  //return the purged items
+  return inventory.splice(2, inventory.length);
+}
