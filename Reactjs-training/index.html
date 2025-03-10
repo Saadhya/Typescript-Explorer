@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>(SPA)single page app</title>
+    <!-- <script src="script.js"></script> -->
+    <script type="module">
+        import React from "https://esm.sh/react@19/?dev"
+        import ReactDOMClient from "https://esm.sh/react-dom@19/client?dev"
+  
+        window.onload = () => {
+          const rootElement = ReactDOMClient.createRoot(document.getElementById('root'));
+          const ints = [1, 2, 3];
+          const elements = ints.map(i => React.createElement('li', {}, i));
+          rootElement.render(React.createElement('ul', {}, elements));
+        };
+      </script>
+</head>
+<body>
+    <h1>Single Page App</h1>
+    <p>Single Page App using React but not react project.</p>
+    <div id="root"></div>
+    
+</body>
+</html>

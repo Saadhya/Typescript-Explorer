@@ -13,7 +13,6 @@ enum - NA
 # type annotations and type inference
 
 # additional built-in types
-
 null
 void
 undefined
@@ -21,13 +20,14 @@ never
 any
 
 # type inference- union types
-
-string | number
+- string | number
+- type Action=raction|absaction
+- eg: interface raction{type: 'INCREMENT'|'DECREMENT'}
+- interface absaction{type:'RESET'}
 
 # program flow
 
 # creating and calling functions
-
 - adding type annotations to functions
 - using optional, default & rest params
 - creating arrow functions

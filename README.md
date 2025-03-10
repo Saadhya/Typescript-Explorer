@@ -36,3 +36,21 @@ npx tsc
 - after creating launch.json 
 use F5 to debug/run the program of js file
 
+# type inference- union types
+- string | number
+- type Action=raction|absaction
+- eg: interface rAction{type: 'INCREMENT'|'DECREMENT'}
+- interface absAction{type:'RESET'}
+
+# rest operator
+- const saved:rAction & absAction={..reservation}
+- generic function call- function abc<T>(entity:T):Promise<T>{}
+
+# overview of typescript- all about type system
+- make the implicit expectations explicit:
+    - property access-> interface
+    - specific values-> union of units
+    - different properties-> union of interfaces
+    - spread operator->intersection
+    - reusable-> generics
+
