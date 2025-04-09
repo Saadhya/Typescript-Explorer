@@ -25,20 +25,15 @@ app.UseCors(p=>p.WithOrigins("http://localhost:5173").AllowAnyHeader().AllowAnyM
 // app.UseCors(o=>o.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
 
 app.MapGet("/houses", async (IHouseRepository houseRepository) =>
-    await houseRepository.GetAllHousesAsync()
-);
+    await houseRepository.GetAllHouses()
+).Produces<HouseDto>(StatusCodes.Status200OK);
 
-// app.MapGet("/houses", (HouseDbContext dbContext) =>
-//     dbContext.Houses.Select(h=> new HouseDto
-//     {
-//         Id = h.Id,
-//         Address = h.Address,
-//         Country = h.Country,
-//         Description = h.Description,
-//         Price = h.Price,
-//         Photo = h.Photo
-//     }).ToList()
-// );
+app.MapGet("/house/{houseId:int}", async (int houseId, IHouseRepository houseRepository) =>{
+    var house = await houseRepository.GetHouseById(houseId);
+    if (house == null)
+        return Results.Problem($"House with ID {houseId} not found", statusCode: 404);
+    return Results.Ok(house);
+}).ProducesProblem(404).Produces<HouseDetailDto>(StatusCodes.Status200OK);
 
 
 app.Run();

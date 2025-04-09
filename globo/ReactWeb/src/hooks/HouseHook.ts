@@ -20,4 +20,18 @@ const useFetchHouses = () => {
   //     return rsp.data;
   // }
 };
+export const useFetchHouseById = (id: number) => {
+  return useQuery<House, AxiosError>({
+    queryKey: ["houses", id],
+    queryFn: () =>
+      axios
+        .get(`${config.baseApiUrl}/house/${id}`)
+        .then((resp) => resp.data)
+        .catch((error) => {
+          console.error("Error fetching house:", error); // Handle errors more visibly
+          throw error;
+        }),
+  });
+}
+
 export default useFetchHouses;

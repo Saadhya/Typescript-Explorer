@@ -16,3 +16,5 @@ npm install bootstrap@5
 
 # refetching
 - added api status component to display user friendly message instead of status codes
+
+- npm install react-router-dom@6

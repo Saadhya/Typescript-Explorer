@@ -1,6 +1,6 @@
 export type House = {
     id: number;
-    desciption: string;
+    description: string;
     country: string;
     address: string;
     price: number;
