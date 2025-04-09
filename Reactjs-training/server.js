@@ -1,5 +1,6 @@
+// run as - node server.js
 const http = require("http");
-
+Promise.resolve().then(() => console.log(1));
 const numbers = [1, 2, 3, 4, 5];
 const genListHTML = () =>
   `<ul>${numbers.map((num) => `<li>${num}</li>`).join("")}</ul>`;

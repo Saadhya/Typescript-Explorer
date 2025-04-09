@@ -1,0 +1,10 @@
+.logo{
+  height: 150px;
+  cursor: pointer;
+}
+tr{
+  cursor: pointer;
+}
+th{
+  text-transform: capitalize;
+}
