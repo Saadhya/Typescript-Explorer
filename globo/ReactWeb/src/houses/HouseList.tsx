@@ -6,7 +6,8 @@ import { useNavigate } from "react-router-dom";
 
 const HouseList = () => {
   const { data, status, isSuccess } = useFetchHouses();
-
+  const nav = useNavigate();
+  
   //   const [houses, setHouses] = useState<House[]>([]);
   //   const fetchHouses = async () => {
   //     const rsp = await fetch(`${config.baseApiUrl}/houses`);
@@ -19,7 +20,6 @@ const HouseList = () => {
   if (!isSuccess) {
     return <ApiStatus status={status} />;
   }
-  const nav = useNavigate()
   return (
     <div>
       <div className="row mb-2">
