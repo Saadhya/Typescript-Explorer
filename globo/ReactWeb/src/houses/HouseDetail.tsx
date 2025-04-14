@@ -1,9 +1,10 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import ApiStatus from "../ApiStatus";
 import { currencyFormatter } from "../config";
-import { useFetchHouseById } from "../hooks/HouseHook";
+import { useDeleteHouse, useFetchHouseById } from "../hooks/HouseHook";
 import defaultPhoto from "./defaultPhoto";
+import Bids from "../bids/Bids";
 
 export const HouseDetail = () => {
   const { id } = useParams();
@@ -11,8 +12,8 @@ export const HouseDetail = () => {
   const houseId = parseInt(id);
 
   const { data, isSuccess, status } = useFetchHouseById(houseId);
-  console.log(data);
-  
+  const deleteHouseMutation = useDeleteHouse();
+
   if (!isSuccess) return <ApiStatus status={status} />;
   if (!data) return <div>House not found</div>;
 
@@ -21,11 +22,22 @@ export const HouseDetail = () => {
       <div className="col-6">
         <div className="row">
           <img
-          
-            src={defaultPhoto}
+            src={data.photo ?data.photo: defaultPhoto}
             alt={data.description}
             className="img-fluid w-60 h-60"
           />
+        </div>
+        <div className="row mt-3">
+          <div className="col-2">
+            <Link className="btn btn-primary w-100" to={`/house/update/${data.id}`}>Edit</Link>
+          </div>
+          <div className="col-2">
+            <button className="btn btn-danger w-100" onClick={()=>{
+              if(window.confirm("Are you sure you want to delete this house?")){
+                deleteHouseMutation.mutate(data);
+              }
+            }}>Delete</button>
+          </div>
         </div>
       </div>
       <div className="col-6">
@@ -44,6 +56,7 @@ export const HouseDetail = () => {
             {currencyFormatter.format(data.price)}
           </h5>
         </div>
+        <Bids house={data} />
       </div>
     </div>
   );

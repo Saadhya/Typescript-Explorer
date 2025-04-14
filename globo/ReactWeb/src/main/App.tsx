@@ -3,6 +3,8 @@ import HouseList from "../houses/HouseList";
 import "./App.css";
 import Header from "./Header";
 import { HouseDetail } from "../houses/HouseDetail";
+import HouseAdd from "../houses/HouseAdd";
+import HouseEdit from "../houses/HouseEdit";
 
 function App() {
   return (
@@ -12,6 +14,8 @@ function App() {
         <Routes>
           <Route path="/" element={<HouseList />} />
           <Route path="/house/:id" element={<HouseDetail />} />
+          <Route path="/house/add" element={<HouseAdd/>} />
+          <Route path="/house/update/:id" element={<HouseEdit />} />
         </Routes>
       </div>
     </BrowserRouter>
